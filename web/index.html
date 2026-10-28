@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Malware File Scanner</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header>
+    <h1>🛡️ Malware File Scanner</h1>
+    <span>Secure file sharing with static analysis</span>
+</header>
+
+<main>
+
+    <section class="card">
+        <h2>Upload a file to scan and share</h2>
+
+        <label id="drop-zone" for="file-input">
+            <input type="file" id="file-input">
+            <span id="drop-text">Drag a file here, or click to choose one</span>
+            <small>Max 100 MB · exe, dll, scr, bat, cmd, ps1, vbs, js, jar, zip, pdf, doc, docx, xls, xlsx, jpg, jpeg, png, txt</small>
+        </label>
+
+        <button id="scan-button" disabled>Scan file</button>
+    </section>
+
+    <section class="card hidden" id="result">
+        <h2>Scan result</h2>
+        <div class="result-head">
+            <span id="result-name"></span>
+            <span class="badge" id="result-risk"></span>
+        </div>
+        <p class="note" id="result-message"></p>
+        <dl>
+            <dt>Size</dt><dd id="result-size"></dd>
+            <dt>SHA-256</dt><dd class="hash" id="result-hash"></dd>
+            <dt>Reasons</dt><dd id="result-reasons"></dd>
+            <dt>Seen before</dt><dd id="result-previous"></dd>
+        </dl>
+        <div id="share-box" class="hidden">
+            <input type="text" id="share-link" readonly>
+            <button id="copy-button">Copy link</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Scan history</h2>
+        <div class="table-wrap">
+            <table>
+                <thead>
+                <tr>
+                    <th>File</th>
+                    <th>Size</th>
+                    <th>Risk</th>
+                    <th>Reasons</th>
+                    <th>Scanned</th>
+                    <th>Share</th>
+                </tr>
+                </thead>
+                <tbody id="history-body">
+                <tr><td colspan="6" class="empty">No scans yet</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
